@@ -31,13 +31,12 @@ io.on("connection", (socket) =>{
         if(filter.isProfane(message)){
             return callback("Profanity is not allowed!")
         }
-
         io.emit("message", message)
         callback()
     })
 
     socket.on("sendLocation", (coords, callback) =>{
-        io.emit("message", `https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
+        io.emit("locationMessage", `https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
         callback()
     })
 
